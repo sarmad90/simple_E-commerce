@@ -1,0 +1,23 @@
+<h1>Listing Customers</h1>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Orders Count</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= "#{customer.firstname} #{customer.lastname}" %></td>
+        <td><%= customer.email %></td>
+        <td><%= customer.orders.count %></td>
+        <td><%= link_to "View Orders", customer_orders_path(customer_id: customer.id)%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

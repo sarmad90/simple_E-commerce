@@ -1,0 +1,29 @@
+<h1>Listing Cart Items (<%= cart_count %>)</h1>
+
+<br/>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= link_to "#{product.name} (#{cart.count(product.id)})", product %></td>
+        <td><%= product.price %></td>
+        <td>
+          <%= link_to 'Increase Quantity', add_to_cart_product_path(product), class: "btn btn-xs btn-warning" %>
+          | <%= link_to 'Remove Item', remove_from_cart_product_path(product), class: "btn btn-xs btn-warning" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>Total Price: <%= total_price_of_cart %></h3>
+<%= link_to "Checkout & Pay", checkout_path, class: "btn btn-success" if cart_count > 0 %>

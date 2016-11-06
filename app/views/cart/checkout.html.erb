@@ -1,0 +1,10 @@
+<%= form_tag("/place_order", method: :post) do %>
+  <div class="row">
+    <div class="col-md-6">Credit Card Number: <%= text_field_tag "cc_number", nil, required: true %></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">Security Code: <%= text_field_tag "cc_security_code", nil, required: true %></div>
+  </div>
+  <%= submit_tag "Pay" %>
+<% end %>
+<h3>Total Price: <%= total_price_of_cart %></h3>
